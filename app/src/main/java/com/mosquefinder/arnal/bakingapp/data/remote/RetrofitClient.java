@@ -19,7 +19,6 @@ public class RetrofitClient {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
-        Log.i("dfd", baseUrl );
         return retrofit;
     }
 }

@@ -2,6 +2,8 @@ package com.mosquefinder.arnal.bakingapp.data.remote;
 
 import com.mosquefinder.arnal.bakingapp.data.model.SOAnswersResponse;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -13,8 +15,8 @@ import retrofit2.http.Query;
 public interface SOService {
 
     @GET("/topher/2017/May/59121517_baking/baking.json")
-    Call<SOAnswersResponse> getAnswers();
+   Call<List<SOAnswersResponse>> getAnswers();
 
     @GET("/topher/2017/May/59121517_baking/baking.json")
-    Call<SOAnswersResponse> getAnswers(@Query("tagged") String tags);
+    Call<List<SOAnswersResponse>> getAnswers(@Query("tagged") String tags);
 }

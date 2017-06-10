@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="com.mosquefinder.arnal.bakingapp.DetailActivity">
+
+
+    <LinearLayout
+        android:layout_width="@dimen/item_width"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/ingredients"
+            android:layout_width="@dimen/item_width"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBack"
+            android:text="@string/ingredients"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:padding="5dp"/>
+
+
+        <TextView
+            android:id="@+id/steps"
+            android:layout_width="@dimen/item_width"
+            android:layout_height="wrap_content"
+            android:text="@string/step"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:background="@color/colorBack"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/steps_recycler_view"
+            android:layout_width="@dimen/item_width"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/item_detail_container_tablet"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:padding="16dp"/>
+
+    </LinearLayout>

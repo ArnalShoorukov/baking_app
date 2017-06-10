@@ -1,5 +1,8 @@
 package com.mosquefinder.arnal.bakingapp.data.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -9,7 +12,7 @@ import java.util.List;
  * Created by arnal on 5/23/17.
  */
 
-public class SOAnswersResponse {
+public class SOAnswersResponse implements Parcelable{
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -28,6 +31,25 @@ public class SOAnswersResponse {
     @SerializedName("image")
     @Expose
     private String image;
+
+    protected SOAnswersResponse(Parcel in) {
+        name = in.readString();
+        ingredients = in.createTypedArrayList(Ingredient.CREATOR);
+        steps = in.createTypedArrayList(Step.CREATOR);
+        image = in.readString();
+    }
+
+    public static final Creator<SOAnswersResponse> CREATOR = new Creator<SOAnswersResponse>() {
+        @Override
+        public SOAnswersResponse createFromParcel(Parcel in) {
+            return new SOAnswersResponse(in);
+        }
+
+        @Override
+        public SOAnswersResponse[] newArray(int size) {
+            return new SOAnswersResponse[size];
+        }
+    };
 
     public Integer getId() {
         return id;
@@ -77,4 +99,16 @@ public class SOAnswersResponse {
         this.image = image;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeTypedList(ingredients);
+        dest.writeTypedList(steps);
+        dest.writeString(image);
+    }
 }
