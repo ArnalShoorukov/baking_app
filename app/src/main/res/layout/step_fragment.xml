@@ -42,6 +42,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tool:text="Description"/>
+            <ImageView
+                android:id="@+id/thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tool:src="@mipmap/ic_launcher"/>
         </LinearLayout>
     </ScrollView>
 

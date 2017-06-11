@@ -10,11 +10,10 @@ import com.mosquefinder.arnal.bakingapp.data.model.SOAnswersResponse;
 import com.mosquefinder.arnal.bakingapp.data.remote.ApiUtils;
 import com.mosquefinder.arnal.bakingapp.data.remote.SOService;
 
+import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import static com.mosquefinder.arnal.bakingapp.MainActivity.nameList;
 /**
@@ -42,26 +41,15 @@ public class MyWidgetRemoteViewsFactory implements RemoteViewsService.RemoteView
     public void getData() {
 
         SOService mService = ApiUtils.getSOService();
-        mService.getAnswers().enqueue(new Callback<List<SOAnswersResponse>>() {
 
-            @Override
-            public void onResponse(Call<List<SOAnswersResponse>> call, Response<List<SOAnswersResponse>> response) {
+        Call<List<SOAnswersResponse>> call = mService.getAnswers();
+        try {
+            List<SOAnswersResponse> responses = call.execute().body();
 
-                if(response.isSuccessful()) {
-
-                    List<SOAnswersResponse> result = response.body();
-
-                    nameList = result;
-                }else {
-                    int statusCode  = response.code();
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<SOAnswersResponse>> call, Throwable t) {
-            }
-        });
+            nameList = responses;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

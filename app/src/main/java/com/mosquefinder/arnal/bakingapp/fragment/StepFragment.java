@@ -201,6 +201,24 @@ public class StepFragment extends Fragment implements ExoPlayer.EventListener {
         }
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        releasePlayer();
+        if (mMediaSession != null) {
+            mMediaSession.setActive(false);
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        releasePlayer();
+        if (mMediaSession != null) {
+            mMediaSession.setActive(false);
+        }
+    }
+
     /**
      * Release the player when the activity is destroyed.
      */

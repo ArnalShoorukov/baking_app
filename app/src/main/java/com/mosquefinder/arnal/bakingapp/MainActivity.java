@@ -9,7 +9,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.facebook.stetho.Stetho;
 import com.mosquefinder.arnal.bakingapp.adapter.TitleAdapter;
 import com.mosquefinder.arnal.bakingapp.data.model.SOAnswersResponse;
 import com.mosquefinder.arnal.bakingapp.data.remote.ApiUtils;
@@ -26,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    public static final String URL_STRING = "https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/baking.json";
 
     private static boolean tablet;
 
@@ -41,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Stetho.initializeWithDefaults(this);
 
         tablet = getResources().getBoolean(R.bool.is_tablet);
         mService = ApiUtils.getSOService();
@@ -54,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         loadAnswers();
         titleAdapter = new TitleAdapter(this, nameList);
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.bake_recycler_view);
-       // mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(titleAdapter);
 
